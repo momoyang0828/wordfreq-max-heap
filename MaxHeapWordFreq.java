@@ -60,5 +60,11 @@ public class MaxHeapWordFreq {
             maxHeapify(arr, largest);
         }
     }
-
+    static void buildMaxHeap(WordFreq[] arr) {
+        heapSize = arr.length;
+        for (int i = heapSize / 2 - 1; i >= 0; i--) {
+            maxHeapify(arr, i);
+        }
+    }
+    
 }
