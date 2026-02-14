@@ -26,7 +26,6 @@ public class MaxHeapWordFreq {
             new WordFreq("would recommend to friends", 800),
             new WordFreq("visit the store", 700)
         };
-
     }
 
     static int left(int i) {
@@ -42,4 +41,24 @@ public class MaxHeapWordFreq {
         arr[i] = arr[j];
         arr[j] = temp;
     }
+
+    static void maxHeapify(WordFreq[] arr, int i) {
+        int l = left(i);
+        int r = right(i);
+        int largest = i;
+
+        if (l < heapSize && arr[l].frequency > arr[largest].frequency) {
+            largest = l;
+        }
+
+        if (r < heapSize && arr[r].frequency > arr[largest].frequency) {
+            largest = r;
+        }
+
+        if (largest != i) {
+            swap(arr, i, largest);
+            maxHeapify(arr, largest);
+        }
+    }
+
 }
