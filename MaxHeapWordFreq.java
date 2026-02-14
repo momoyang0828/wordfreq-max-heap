@@ -26,6 +26,11 @@ public class MaxHeapWordFreq {
             new WordFreq("would recommend to friends", 800),
             new WordFreq("visit the store", 700)
         };
+        buildMaxHeap(arr);
+        for (WordFreq wf : arr) {
+            System.out.println(wf.word + ": " + wf.frequency);
+        }
+        System.out.println("Is max heap: " + isMaxHeap(arr));
     }
 
     static int left(int i) {
@@ -66,5 +71,15 @@ public class MaxHeapWordFreq {
             maxHeapify(arr, i);
         }
     }
-    
+
+    static boolean isMaxHeap(WordFreq[] arr) {
+        for (int i = 0; i < arr.length / 2; i++) {
+            int l = 2 * i + 1;
+            int r = 2 * i + 2;
+            if (l < arr.length && arr[i].frequency < arr[l].frequency) return false;
+            if (r < arr.length && arr[i].frequency < arr[r].frequency) return false;
+        }
+        return true;
+    }
+
 }
